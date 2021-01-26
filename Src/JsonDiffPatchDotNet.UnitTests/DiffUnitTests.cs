@@ -88,37 +88,6 @@ namespace JsonDiffPatchDotNet.UnitTests
 		}
 
 		[Test]
-		public void Diff_EfficientStringDiff_ValidPatch()
-		{
-			var jdp = new JsonDiffPatch(new Options { TextDiff = TextDiffMode.Efficient });
-			var left = JObject.Parse(@"{ ""p"": ""lp.Value.ToString().Length > _options.MinEfficientTextDiffLength"" }");
-			var right = JObject.Parse(@"{ ""p"": ""blah1"" }");
-
-			JToken result = jdp.Diff(left, right);
-
-			Assert.AreEqual(JTokenType.Object, result.Type);
-			JObject obj = (JObject)result;
-			Assert.IsNotNull(obj.Property("p"), "Property Name");
-			Assert.AreEqual(JTokenType.Array, obj.Property("p").Value.Type, "Array Value");
-			Assert.AreEqual(3, ((JArray)obj.Property("p").Value).Count, "Array Length");
-			Assert.AreEqual("@@ -1,64 +1,5 @@\n-lp.Value.ToString().Length %3e _options.MinEfficientTextDiffLength\n+blah1\n", ((JArray)obj.Property("p").Value)[0].ToString(), "Array Added Value");
-			Assert.AreEqual(0, ((JArray)obj.Property("p").Value)[1].ToObject<int>(), "Array Added Value");
-			Assert.AreEqual(2, ((JArray)obj.Property("p").Value)[2].ToObject<int>(), "Array String Diff Indicator");
-		}
-
-		[Test]
-		public void Diff_EfficientStringDiff_NoChanges()
-		{
-			var jdp = new JsonDiffPatch(new Options { TextDiff = TextDiffMode.Efficient });
-			var left = JObject.Parse(@"{ ""p"": ""lp.Value.ToString().Length > _options.MinEfficientTextDiffLength"" }");
-			var right = JObject.Parse(@"{ ""p"": ""lp.Value.ToString().Length > _options.MinEfficientTextDiffLength"" }");
-
-			JToken result = jdp.Diff(left, right);
-
-			Assert.IsNull(result, "No Changes");
-		}
-
-		[Test]
 		public void Diff_LeftNull_Exception()
 		{
 			var jdp = new JsonDiffPatch();

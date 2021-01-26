@@ -1,9 +1,10 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using Newtonsoft.Json.Linq;
 
 namespace JsonDiffPatchDotNet
 {
+	/// <summary>Longest Common Subsequence implementation.</summary>
 	internal class Lcs
 	{
 		internal List<JToken> Sequence { get; set; }
