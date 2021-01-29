@@ -1,13 +1,12 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFrameworks Condition="'$(LibraryFrameworks)'==''">net45;netstandard1.0;netstandard1.3;netstandard2.0</TargetFrameworks>
-    <TargetFrameworks Condition="'$(LibraryFrameworks)'!=''">$(LibraryFrameworks)</TargetFrameworks>
+    <TargetFrameworks>net461;net472</TargetFrameworks>
     <LangVersion>latest</LangVersion>
     <RootNamespace>JsonDiffPatchDotNet</RootNamespace>
-    <AssemblyName>JsonDiffPatchDotNet</AssemblyName>
+    <AssemblyName>DiffPatch</AssemblyName>
     <AssemblyVersion>2.3.0.0</AssemblyVersion>
     <FileVersion>2.3.0.0</FileVersion>
-    <SignAssembly>true</SignAssembly>
+    <SignAssembly>false</SignAssembly>
     <RepositoryUrl>https://github.com/wbish/jsondiffpatch.net</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <NeutralLanguage>en-US</NeutralLanguage>
@@ -19,7 +18,6 @@
     <PackageId>JsonDiffPatch.Net</PackageId>
     <PackageTags>json diff patch unpatch</PackageTags>
     <PackageProjectUrl>https://github.com/wbish/jsondiffpatch.net</PackageProjectUrl>
-    <AssemblyOriginatorKeyFile>JsonDiffPatchDotNet.snk</AssemblyOriginatorKeyFile>
     <MinClientVersion>2.12</MinClientVersion>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Version>2.3.0.0</Version>
